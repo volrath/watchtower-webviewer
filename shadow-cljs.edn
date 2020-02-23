@@ -1,0 +1,7 @@
+{:deps   {:aliases [:dev]}
+ :builds {:app {:target           :browser
+                :output-dir       "resources/public/js"
+                :assets-path      "/js"
+                :modules          {:watchtower {:entries [vlt.jdbc-watchtower.webviewer.app]}}
+                :compiler-options {:optimizations :simple
+                                   :pseudo-names  true}}}}

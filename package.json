@@ -1,0 +1,9 @@
+{
+    "name": "watchtower-webviewer",
+    "version": "0.1.0",
+    "dependencies": {
+        "create-react-class": "^15.6.3",
+        "react": "^16.12.0",
+        "react-dom": "^16.12.0"
+    }
+}
