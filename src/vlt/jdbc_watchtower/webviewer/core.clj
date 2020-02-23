@@ -29,9 +29,10 @@
   index.html file."
   [request]
   (if (:websocket? request)
-    (httpkit/as-channel request
-                        {:on-open    (partial swap! connections conj)
-                         :on-receive (comp process-ws-message edn/read-string)})
+    (httpkit/with-channel request socket
+      (swap! connections conj socket)
+      (httpkit/on-close socket (fn [_] (swap! connections disj socket)))
+      (httpkit/on-receive socket (comp process-ws-message edn/read-string)))
     {:status 200
      :headers {"Content-Type" "text/html"}
      :body (io/input-stream (io/resource (str static-root-path "/index.html")))}))
