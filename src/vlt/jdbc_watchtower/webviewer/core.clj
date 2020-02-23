@@ -21,7 +21,7 @@
 
 
 (def ^:private static-root-path
-  "public")
+  "watchtower/webviewer/public")
 
 
 (defn web-handler
